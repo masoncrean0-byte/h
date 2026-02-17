@@ -13,7 +13,7 @@ jobs:
 
       - name: Compile dylib
         run: |
-          clang -dynamiclib -arch arm64 -framework UIKit -framework Foundation orbitmenu.m -o orbitmenu.dylib
+          clang -dynamiclib -arch arm64 -framework UIKit -framework Foundation pilgy.m -o pilgy.dylib
 
       - name: Upload dylib
         uses: actions/upload-artifact@v4
