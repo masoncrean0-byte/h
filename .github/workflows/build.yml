@@ -7,18 +7,20 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    
-uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    
-name: Compile dylib
-    run: |
-      clang -dynamiclib \-arch arm64 \-framework UIKit \-framework Foundation \-fobjc-arc \
-      orbitmenu.m \-o orbitmenu.dylib
+      - name: Compile dylib
+        run: |
+          clang -dynamiclib \
+          -arch arm64 \
+          -framework UIKit \
+          -framework Foundation \
+          -fobjc-arc \
+          orbitmenu.m \
+          -o orbitmenu.dylib
 
-    
-name: Upload dylib
-    uses: actions/upload-artifact@v4
-    with:
-      name: compiled-dylib
-      path: orbitmenu.dylib
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-dylib
+          path: orbitmenu.dylib
