@@ -1,4 +1,5 @@
-name: Build dylib
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>name: Build dylib
 
 on: [push]
 
@@ -24,3 +25,7 @@ jobs:
         with:
           name: compiled-dylib
           path: orbitmenu.dylib
+attribute((constructor))
+static void init() {
+    NSLog(@"Orbit dylib injected");
+}
