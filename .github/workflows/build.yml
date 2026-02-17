@@ -1,22 +1,7 @@
-name: Build dylib
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-on:
-  push:
-
-jobs:
-  build:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Compile dylib
-        run: |
-          clang -dynamiclib -arch arm64 -framework UIKit -framework Foundation orbitmenu.m -o orbitmenu.dylib
-
-      - name: Upload dylib
-        uses: actions/upload-artifact@v4
-        with:
-          name: compiled-dylib
-          path: orbitmenu.dylib
+attribute((constructor))
+static void init() {
+    NSLog(@"Orbit menu dylib loaded successfully");
+}
